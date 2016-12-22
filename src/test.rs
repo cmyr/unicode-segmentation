@@ -102,6 +102,12 @@ fn test_words() {
         // perhaps wrong, spaces should not be included?
         ("hello world", &["hello", " ", "world"]),
         ("🇨🇦🇨🇭🇿🇲🇿 hi", &["🇨🇦", "🇨🇭", "🇿🇲", "🇿", " ", "hi"]),
+        // these are all taken from http://unicode.org/Public/emoji/4.0/emoji-zwj-sequences.txt
+        ("\u{1f468}\u{200d}\u{1f692}\u{f469}\u{200d}\u{1f4bb}", &["👨‍🚒", "👩‍💻"]),
+        ("\u{1f6b4}\u{1f3ff}\u{200d}\u{2642}\u{fe0f}\u{1f646}\u{1f3fc}\u{200d}\u{2640}\u{fe0f}", &["🚴🏿‍♂️", "🙆🏼‍♀️"]),
+        ("\u{1f3f3}\u{fe0f}\u{200d}\u{1f308}", &["🏳️‍🌈"]),
+        ("\u{1f441}\u{fe0f}\u{200d}\u{1f5e8}\u{fe0f}", &["👁️‍🗨️"]),
+        ("\u{1f468}\u{200d}\u{2764}\u{fe0f}\u{200d}\u{1f48b}\u{200d}\u{1f468}\u{1f469}\u{200d}\u{1f466}", &["👨‍❤️‍💋‍👨", "👩‍👦"])
     ];
     for &(s, w) in TEST_WORD.iter().chain(EXTRA_TESTS.iter()) {
         macro_rules! assert_ {
